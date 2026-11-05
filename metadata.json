@@ -1,0 +1,6 @@
+{
+  "name": "EventHive SPSU",
+  "description": "Sir Padampat Singhania University (SPSU), Udaipur - College Event Discovery & Management Platform for hackathons, workshops, cultural fests, and competitions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

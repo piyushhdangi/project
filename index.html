@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventHive @ SPSU – Sir Padampat Singhania University, Udaipur | Event Discovery</title>
+  <meta name="description" content="Discover university hackathons, Panache cultural fest, technical workshops, sports fests, and competitions at Sir Padampat Singhania University (SPSU), Udaipur." />
+  
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="EventHive @ SPSU – Sir Padampat Singhania University, Udaipur" />
+  <meta property="og:description" content="Discover university hackathons, Panache cultural fest, technical workshops, sports fests, and competitions at Sir Padampat Singhania University (SPSU), Udaipur." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header & Navigation
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Zone -->
+      <a href="#home" class="brand-link" aria-label="EventHive SPSU Home">
+        <div class="brand-icon">
+          <!-- Hexagon Hive Icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-name">SPSU Event<span>Hive</span></div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#explore" class="nav-link">Explore Events</a></li>
+          <li><a href="#categories" class="nav-link">Categories</a></li>
+          <li>
+            <a href="#saved" class="nav-link">
+              Saved
+              <span class="nav-badge" id="nav-saved-count">0</span>
+            </a>
+          </li>
+          <li id="nav-item-passes">
+            <a href="#registrations-section" class="nav-link">
+              My Passes
+              <span class="nav-badge" id="nav-passes-count" style="background: rgba(16, 185, 129, 0.25); color: #34d399;">0</span>
+            </a>
+          </li>
+          <li id="nav-item-organizer"><a href="#organizer" class="nav-link">Organizer</a></li>
+          <li id="nav-item-admin" style="display: none;"><a href="#admin-section" class="nav-link">Admin Center</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Auth Profile / Login Capsule -->
+        <div class="user-menu-container" id="user-menu-wrap">
+          <!-- Populated by script.js: either Login Button or User Profile Capsule -->
+          <button class="user-nav-capsule" id="btn-user-capsule" type="button" aria-expanded="false" aria-haspopup="true">
+            <div class="user-avatar-pill role-student" id="header-avatar">AS</div>
+            <span class="user-name-text" id="header-user-name">Aarav S.</span>
+            <span class="role-badge role-student" id="header-role-badge">Student</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <!-- Floating User Dropdown Menu -->
+          <div class="user-dropdown-menu" id="user-dropdown-menu">
+            <div class="dropdown-user-header">
+              <div class="user-avatar-pill role-student" id="dropdown-avatar">AS</div>
+              <div class="dropdown-user-info">
+                <div class="dropdown-user-name" id="dropdown-user-name">Aarav Sharma</div>
+                <div class="dropdown-user-email" id="dropdown-user-email">student@spsu.ac.in</div>
+                <div class="dropdown-user-dept" id="dropdown-user-dept">B.Tech CSE (3rd Yr) · SPSU Udaipur</div>
+              </div>
+            </div>
+
+            <div class="dropdown-role-section">
+              <div class="dropdown-section-title">Switch Demo Role (1-Click)</div>
+              <div class="role-switcher-pills">
+                <button type="button" class="btn-role-switch active" data-role="student" id="switch-btn-student">
+                  <span>🎓 Student</span>
+                </button>
+                <button type="button" class="btn-role-switch" data-role="organizer" id="switch-btn-organizer">
+                  <span>📋 Organizer</span>
+                </button>
+                <button type="button" class="btn-role-switch" data-role="admin" id="switch-btn-admin">
+                  <span>🛡️ Admin</span>
+                </button>
+              </div>
+            </div>
+
+            <ul class="dropdown-menu-links">
+              <li>
+                <a href="#registrations-section" class="dropdown-link-item" id="dropdown-link-passes">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                  <span>My Campus Passes</span>
+                </a>
+              </li>
+              <li>
+                <a href="#saved" class="dropdown-link-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <span>Saved Events</span>
+                </a>
+              </li>
+              <li>
+                <a href="#organizer" class="dropdown-link-item" id="dropdown-link-organizer">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  <span>Organizer Dashboard</span>
+                </a>
+              </li>
+              <li id="dropdown-admin-item" style="display: none;">
+                <a href="#admin-section" class="dropdown-link-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                  <span>Admin Control Center</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown-link-item" id="dropdown-link-login-modal">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 8v4M12 16h.01"></path>
+                  </svg>
+                  <span>All Accounts &amp; Password Sign In</span>
+                </a>
+              </li>
+            </ul>
+
+            <button type="button" class="btn-dropdown-logout" id="btn-dropdown-logout">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>Switch User / Sign In</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-post-event" id="btn-header-post" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Post Event</span>
+        </button>
+
+        <button class="btn-mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+      <ul class="mobile-nav-list">
+        <li><a href="#home" class="mobile-nav-link active">Home</a></li>
+        <li><a href="#explore" class="mobile-nav-link">Explore Events</a></li>
+        <li><a href="#categories" class="mobile-nav-link">Categories</a></li>
+        <li>
+          <a href="#saved" class="mobile-nav-link">
+            <span>Saved Events</span>
+            <span class="nav-badge" id="mobile-saved-count">0</span>
+          </a>
+        </li>
+        <li id="mobile-item-passes">
+          <a href="#registrations-section" class="mobile-nav-link">
+            <span>My Campus Passes</span>
+            <span class="nav-badge" id="mobile-passes-count" style="background: rgba(16, 185, 129, 0.25); color: #34d399;">0</span>
+          </a>
+        </li>
+        <li><a href="#organizer" class="mobile-nav-link">Organizer Dashboard</a></li>
+        <li id="mobile-item-admin" style="display: none;"><a href="#admin-section" class="mobile-nav-link">Admin Center</a></li>
+        <li style="padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
+          <button type="button" class="btn-primary" id="mobile-btn-switch-account" style="width: 100%; justify-content: center;">
+            <span id="mobile-user-status">Switch Role / Login</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- =======================================================================
+         Hero Section
+         ======================================================================= -->
+    <section class="hero-section" id="home">
+      <div class="container">
+        <div class="hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>Sir Padampat Singhania University · Udaipur Campus</span>
+        </div>
+
+        <h1 class="hero-title">
+          Discover SPSU Events. <br />
+          <span class="gradient-text">Explore Campus Opportunities.</span>
+        </h1>
+
+        <p class="hero-description">
+          The centralized event discovery and participation hub for Sir Padampat Singhania University (SPSU), Udaipur. 
+          Discover university hackathons, Panache cultural fest, technical workshops, sports tournaments, and club activities.
+        </p>
+
+        <!-- Multi-Field Hero Search Bar -->
+        <div class="hero-search-bar" role="search">
+          <div class="search-field">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              id="hero-search-input" 
+              placeholder="Search by event name, SPSU club (CSE, SAC, Robotics), venue..." 
+              aria-label="Search events" 
+            />
+          </div>
+
+          <div class="search-field">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 6h16M7 12h10m-8 6h6"></path>
+            </svg>
+            <select id="hero-category-select" aria-label="Filter by Category">
+              <option value="all">All Categories</option>
+              <option value="Hackathons">Hackathons & Coding</option>
+              <option value="Workshops">Workshops & Bootcamps</option>
+              <option value="Cultural">Cultural & Arts</option>
+              <option value="Photography">Photography & Media</option>
+              <option value="Robotics">Robotics & Hardware</option>
+              <option value="Competitions">Competitions & Pitch</option>
+              <option value="Seminars">Seminars & Talks</option>
+              <option value="Sports">Sports & Gaming</option>
+            </select>
+          </div>
+
+          <div class="search-field">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <select id="hero-mode-select" aria-label="Participation Mode">
+              <option value="all">All Modes</option>
+              <option value="In-Person">In-Person / Offline</option>
+              <option value="Online">Online / Virtual</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <button class="btn-hero-search" id="hero-search-btn" type="button">
+            <span>Find Events</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Hero Stats Strip -->
+        <div class="hero-stats-strip">
+          <div class="hero-stat-card">
+            <div class="hero-stat-number">14+</div>
+            <div class="hero-stat-label">SPSU Events</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-number">8</div>
+            <div class="hero-stat-label">Event Categories</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-number">100%</div>
+            <div class="hero-stat-label">Free Student Access</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-number">Udaipur</div>
+            <div class="hero-stat-label">Campus Verified</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Popular Categories Section
+         ======================================================================= -->
+    <section class="categories-section" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tagline">Browse by Interest</span>
+          <h2 class="section-title">Popular Event Categories</h2>
+          <p class="section-subtitle">
+            Explore inter-college events classified by discipline. Click any category to view matching opportunities.
+          </p>
+        </div>
+
+        <div class="categories-grid">
+          <div class="category-card" data-category="Hackathons" role="button" tabindex="0">
+            <div class="category-icon">💻</div>
+            <div class="category-name">Hackathons</div>
+            <div class="category-count">3 Events</div>
+          </div>
+
+          <div class="category-card" data-category="Workshops" role="button" tabindex="0">
+            <div class="category-icon">🛠️</div>
+            <div class="category-name">Workshops</div>
+            <div class="category-count">3 Events</div>
+          </div>
+
+          <div class="category-card" data-category="Cultural" role="button" tabindex="0">
+            <div class="category-icon">🎭</div>
+            <div class="category-name">Cultural Fest</div>
+            <div class="category-count">1 Event</div>
+          </div>
+
+          <div class="category-card" data-category="Robotics" role="button" tabindex="0">
+            <div class="category-icon">🤖</div>
+            <div class="category-name">Robotics</div>
+            <div class="category-count">2 Events</div>
+          </div>
+
+          <div class="category-card" data-category="Competitions" role="button" tabindex="0">
+            <div class="category-icon">🏆</div>
+            <div class="category-name">Competitions</div>
+            <div class="category-count">1 Event</div>
+          </div>
+
+          <div class="category-card" data-category="Seminars" role="button" tabindex="0">
+            <div class="category-icon">🎓</div>
+            <div class="category-name">Seminars</div>
+            <div class="category-count">2 Events</div>
+          </div>
+
+          <div class="category-card" data-category="Photography" role="button" tabindex="0">
+            <div class="category-icon">📸</div>
+            <div class="category-name">Photography</div>
+            <div class="category-count">1 Event</div>
+          </div>
+
+          <div class="category-card" data-category="Sports" role="button" tabindex="0">
+            <div class="category-icon">⚽</div>
+            <div class="category-name">Sports</div>
+            <div class="category-count">1 Event</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Explore Events Section
+         ======================================================================= -->
+    <section class="explore-section" id="explore">
+      <div class="container">
+        <div class="section-header with-actions">
+          <div>
+            <span class="section-tagline">Comprehensive Listings</span>
+            <h2 class="section-title">Explore All Events</h2>
+            <p class="section-subtitle">
+              Browse, filter, and bookmark verified hackathons, competitions, workshops, and fests.
+            </p>
+          </div>
+        </div>
+
+        <!-- Filter & Search Controls Toolbar -->
+        <div class="explore-toolbar">
+          <div class="filter-row-top">
+            <div class="filter-search-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input 
+                type="text" 
+                id="explore-search-input" 
+                placeholder="Search by event title, college name, venue..." 
+                aria-label="Filter events" 
+              />
+            </div>
+
+            <select class="filter-select" id="explore-mode-select" aria-label="Participation Mode">
+              <option value="all">All Modes (Online &amp; In-Person)</option>
+              <option value="In-Person">In-Person Only</option>
+              <option value="Online">Online / Virtual Only</option>
+              <option value="Hybrid">Hybrid Only</option>
+            </select>
+
+            <select class="filter-select" id="explore-sort-select" aria-label="Sort Events">
+              <option value="date-asc">Sort: Upcoming Date (Earliest)</option>
+              <option value="date-desc">Sort: Upcoming Date (Latest)</option>
+              <option value="deadline">Sort: Registration Deadline</option>
+              <option value="title-asc">Sort: Event Title (A–Z)</option>
+            </select>
+
+            <button class="btn-reset-filters" id="btn-reset-filters" type="button" title="Reset all applied filters">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+              </svg>
+              <span>Reset</span>
+            </button>
+          </div>
+
+          <!-- Quick Category Filter Chips -->
+          <div class="category-segmented-bar" role="tablist" aria-label="Category filters">
+            <button class="category-chip active" data-category="all" role="tab" type="button">All Events</button>
+            <button class="category-chip" data-category="Hackathons" role="tab" type="button">Hackathons</button>
+            <button class="category-chip" data-category="Workshops" role="tab" type="button">Workshops</button>
+            <button class="category-chip" data-category="Cultural" role="tab" type="button">Cultural Fest</button>
+            <button class="category-chip" data-category="Robotics" role="tab" type="button">Robotics</button>
+            <button class="category-chip" data-category="Competitions" role="tab" type="button">Competitions</button>
+            <button class="category-chip" data-category="Seminars" role="tab" type="button">Seminars</button>
+            <button class="category-chip" data-category="Photography" role="tab" type="button">Photography</button>
+            <button class="category-chip" data-category="Sports" role="tab" type="button">Sports</button>
+          </div>
+        </div>
+
+        <!-- Results Counter & Info -->
+        <div class="results-meta-bar">
+          <div class="results-count">
+            Showing <span id="results-count-num">0</span> events at SPSU Udaipur
+          </div>
+          <div>All dates verified for SPSU Udaipur 2026 Academic Calendar</div>
+        </div>
+
+        <!-- Events Grid -->
+        <div class="events-grid" id="events-grid" aria-live="polite">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Saved Events Section
+         ======================================================================= -->
+    <section class="saved-section" id="saved">
+      <div class="container">
+        <div class="section-header with-actions">
+          <div>
+            <span class="section-tagline">Your Collection</span>
+            <h2 class="section-title">Saved Events</h2>
+            <p class="section-subtitle">
+              Bookmarked events are automatically preserved in your browser's LocalStorage for fast offline reference.
+            </p>
+          </div>
+          <div class="academic-badge" id="saved-section-count">
+            0 Events
+          </div>
+        </div>
+
+        <div class="events-grid" id="saved-events-grid">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         My Campus Event Passes Section (Student Registrations)
+         ======================================================================= -->
+    <section class="registrations-section" id="registrations-section">
+      <div class="container">
+        <div class="section-header with-actions">
+          <div>
+            <span class="section-tagline">Campus Access</span>
+            <h2 class="section-title">My Registered Passes &amp; Tickets</h2>
+            <p class="section-subtitle">
+              Instant digital entry passes for SPSU events. Present your QR code and pass number at the venue entrance.
+            </p>
+          </div>
+          <div class="academic-badge" id="reg-count-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">
+            0 Confirmed Passes
+          </div>
+        </div>
+
+        <div class="events-grid" id="registrations-grid">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =======================================================================
+         Organizer Dashboard Section
+         ======================================================================= -->
+    <section class="organizer-section" id="organizer">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tagline">Event Management Portal</span>
+          <h2 class="section-title">Organizer Dashboard</h2>
+          <p class="section-subtitle">
+            Demonstration interface for college event organizers and clubs to create, edit, and manage event listings.
+          </p>
+        </div>
+
+        <!-- Demonstration Notice Banner -->
+        <div class="demo-banner">
+          <div class="demo-banner-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="demo-banner-text">
+            <h4>Demonstration Environment (No Authentication Required)</h4>
+            <p>
+              This portal demonstrates full CRUD (Create, Read, Update, Delete) capability using client-side LocalStorage.
+              Events created or edited here immediately reflect on the public listing and persist across page reloads.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dashboard Summary Stats -->
+        <div class="dashboard-stats-grid">
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Total Events</div>
+            <div class="dash-stat-value" id="stat-total-events">0</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">In-Person Events</div>
+            <div class="dash-stat-value" id="stat-inperson-events">0</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Online / Virtual</div>
+            <div class="dash-stat-value" id="stat-online-events">0</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dash-stat-label">Saved by You</div>
+            <div class="dash-stat-value" id="stat-saved-events">0</div>
+          </div>
+        </div>
+
+        <!-- Dashboard Action Controls -->
+        <div class="dashboard-controls">
+          <div style="font-weight: 600; font-size: 1.1rem; color: var(--text-main);">
+            Managed Event Listings
+          </div>
+
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn-restore-data" id="btn-dash-restore" type="button" title="Reset sample events to default dataset">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+              </svg>
+              <span>Restore Defaults</span>
+            </button>
+
+            <button class="btn-add-event" id="btn-dash-add" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Create New Event</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dashboard Events Table -->
+        <div class="dashboard-table-wrapper">
+          <table class="dashboard-table">
+            <thead>
+              <tr>
+                <th>Event &amp; Institution</th>
+                <th>Category</th>
+                <th>Mode</th>
+                <th>Date</th>
+                <th>Deadline</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dashboard-table-body">
+              <!-- Rendered dynamically by script.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         Admin Control Center Section (University Governance & Analytics)
+         ======================================================================= -->
+    <section class="organizer-section" id="admin-section" style="border-top: 2px solid rgba(245, 158, 11, 0.3); background: rgba(15, 22, 43, 0.85); display: none;">
+      <div class="container">
+        <div class="section-header with-actions">
+          <div>
+            <div class="admin-badge-strip">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>University Administrator View · Dr. Rajesh Verma (Dean SAC)</span>
+            </div>
+            <h2 class="section-title">Campus Governance &amp; Event Analytics</h2>
+            <p class="section-subtitle">
+              Super-admin panel for event authorization, university calendar sync, student engagement metrics, and club oversight.
+            </p>
+          </div>
+          <div>
+            <button class="btn-secondary" id="btn-admin-export-data" type="button" title="Export all campus events and registration data">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Export Audit Data</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Admin KPI Metric Cards -->
+        <div class="admin-analytics-grid">
+          <div class="admin-analytic-card">
+            <div class="admin-analytic-val" id="admin-kpi-events">14</div>
+            <div class="admin-analytic-label">Active Campus Events</div>
+          </div>
+          <div class="admin-analytic-card">
+            <div class="admin-analytic-val" id="admin-kpi-registrations">142</div>
+            <div class="admin-analytic-label">Total Student Registrations</div>
+          </div>
+          <div class="admin-analytic-card">
+            <div class="admin-analytic-val" id="admin-kpi-clubs">7</div>
+            <div class="admin-analytic-label">Organizing SPSU Societies</div>
+          </div>
+          <div class="admin-analytic-card">
+            <div class="admin-analytic-val" style="color: #34d399;" id="admin-kpi-health">100%</div>
+            <div class="admin-analytic-label">SPSU Academic Compliance</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#home" class="brand-link" aria-label="EventHive SPSU Home">
+            <div class="brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <div class="brand-name">SPSU Event<span>Hive</span></div>
+          </a>
+          <p class="footer-brand-desc">
+            The dedicated collegiate event discovery and student engagement portal for 
+            <strong>Sir Padampat Singhania University (SPSU), Udaipur</strong>. 
+            Bhatewar, NH-76, Udaipur, Rajasthan 313601.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#explore">Explore All Events</a></li>
+            <li><a href="#categories">Browse Categories</a></li>
+            <li><a href="#saved">Saved Events</a></li>
+            <li><a href="#organizer">Organizer Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>SPSU Societies</h5>
+          <ul class="footer-links">
+            <li><a href="#explore">Coding Club (CSE Dept)</a></li>
+            <li><a href="#explore">Student Activity Council</a></li>
+            <li><a href="#explore">Robotics &amp; Mechatronics</a></li>
+            <li><a href="#explore">School of Management</a></li>
+            <li><a href="#explore">SPSU Sports Council</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Developer &amp; Help</h5>
+          <ul class="footer-links">
+            <li><a href="#" id="btn-how-to-run">How to Run Locally (Live Server)</a></li>
+            <li><a href="https://spsu.ac.in" target="_blank" rel="noopener noreferrer">SPSU Official Portal</a></li>
+            <li><span class="academic-badge">B.Tech CSE Project Demo</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 EventHive @ Sir Padampat Singhania University (SPSU), Udaipur. Built with HTML5, CSS3 &amp; Vanilla JavaScript.
+        </div>
+        <div class="academic-badge">
+          Bhatewar, Udaipur, Rajasthan · No Frameworks Required
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       Event Details Modal
+       ========================================================================= -->
+  <div class="modal-backdrop" id="details-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-category">Event Details</div>
+        <button class="btn-close-modal" aria-label="Close modal" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-banner-wrap">
+          <img src="" alt="Event Banner" id="modal-banner" class="modal-banner-img" />
+        </div>
+
+        <div class="modal-meta-row">
+          <span class="badge-mode" id="modal-mode">In-Person</span>
+        </div>
+
+        <h3 class="modal-event-title" id="modal-title">Event Title</h3>
+
+        <div class="modal-college-name">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+          <span id="modal-college">University Name</span>
+        </div>
+
+        <div class="modal-details-grid">
+          <div class="modal-info-block">
+            <span class="info-label">Date &amp; Time</span>
+            <span class="info-val" id="modal-date">Nov 21, 2026</span>
+          </div>
+          <div class="modal-info-block">
+            <span class="info-label">Venue / Location</span>
+            <span class="info-val" id="modal-venue">Campus Hall</span>
+          </div>
+          <div class="modal-info-block">
+            <span class="info-label">Registration Deadline</span>
+            <span class="info-val" id="modal-deadline">Nov 16, 2026</span>
+          </div>
+          <div class="modal-info-block">
+            <span class="info-label">Eligibility</span>
+            <span class="info-val" id="modal-eligibility">All Students</span>
+          </div>
+          <div class="modal-info-block">
+            <span class="info-label">Registration Fee</span>
+            <span class="info-val" id="modal-fee">Free</span>
+          </div>
+          <div class="modal-info-block">
+            <span class="info-label">Prizes / Perks</span>
+            <span class="info-val" id="modal-prizes">Certificates</span>
+          </div>
+        </div>
+
+        <div class="modal-description-section">
+          <h4>About This Event</h4>
+          <p class="modal-description-text" id="modal-description">
+            Full event overview and details.
+          </p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" id="modal-share-btn" type="button" title="Copy event link to clipboard">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+            <polyline points="16 6 12 2 8 6"></polyline>
+            <line x1="12" y1="2" x2="12" y2="15"></line>
+          </svg>
+          <span>Share</span>
+        </button>
+
+        <button class="btn-secondary" id="modal-bookmark-btn" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Bookmark Event</span>
+        </button>
+
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" id="modal-register-btn">
+          <span>Register Now</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Add / Edit Event Modal (Organizer)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="form-modal" role="dialog" aria-modal="true" aria-labelledby="form-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title" id="form-modal-title">Add New College Event</div>
+        <button class="btn-close-modal" aria-label="Close form modal" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="event-form" novalidate>
+        <div class="modal-body">
+          <div class="form-grid two-col">
+            <div class="form-group full-width">
+              <label for="form-event-title" class="form-label">
+                Event Name / Title <span class="required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="form-event-title" 
+                class="form-control" 
+                placeholder="e.g. National Hackathon 2026" 
+                required 
+              />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="form-event-college" class="form-label">
+                Organizing College / University <span class="required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="form-event-college" 
+                class="form-control" 
+                placeholder="e.g. Indian Institute of Technology, Delhi" 
+                required 
+              />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event-category" class="form-label">
+                Category <span class="required">*</span>
+              </label>
+              <select id="form-event-category" class="form-control" required>
+                <option value="Hackathons">Hackathons &amp; Coding</option>
+                <option value="Workshops">Workshops &amp; Bootcamps</option>
+                <option value="Cultural">Cultural &amp; Arts Fest</option>
+                <option value="Robotics">Robotics &amp; Hardware</option>
+                <option value="Competitions">Competitions &amp; Pitch</option>
+                <option value="Seminars">Seminars &amp; Talks</option>
+                <option value="Photography">Photography &amp; Media</option>
+                <option value="Sports">Sports &amp; Gaming</option>
+              </select>
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event-mode" class="form-label">
+                Participation Mode <span class="required">*</span>
+              </label>
+              <select id="form-event-mode" class="form-control" required>
+                <option value="In-Person">In-Person / Offline</option>
+                <option value="Online">Online / Virtual</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event-date" class="form-label">
+                Event Date <span class="required">*</span>
+              </label>
+              <input type="date" id="form-event-date" class="form-control" required />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event-time" class="form-label">
+                Time (e.g. 10:00 AM IST)
+              </label>
+              <input 
+                type="text" 
+                id="form-event-time" 
+                class="form-control" 
+                placeholder="e.g. 09:30 AM – 05:00 PM IST" 
+              />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="form-event-venue" class="form-label">
+                Venue or Online Platform Info <span class="required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="form-event-venue" 
+                class="form-control" 
+                placeholder="e.g. Main Auditorium, Campus Lawns OR Zoom / Google Meet" 
+                required 
+              />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event-deadline" class="form-label">
+                Registration Deadline <span class="required">*</span>
+              </label>
+              <input type="date" id="form-event-deadline" class="form-control" required />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event-fee" class="form-label">
+                Registration Fee
+              </label>
+              <input 
+                type="text" 
+                id="form-event-fee" 
+                class="form-control" 
+                placeholder="e.g. Free OR ₹150 per team" 
+              />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event-eligibility" class="form-label">
+                Eligibility Criteria
+              </label>
+              <input 
+                type="text" 
+                id="form-event-eligibility" 
+                class="form-control" 
+                placeholder="e.g. Open to all branches, Teams of 2–4" 
+              />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event-prizes" class="form-label">
+                Prize Pool / Perks
+              </label>
+              <input 
+                type="text" 
+                id="form-event-prizes" 
+                class="form-control" 
+                placeholder="e.g. ₹50,000 Cash Prize + Swag" 
+              />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="form-event-reg-url" class="form-label">
+                Official Registration Link <span class="required">*</span>
+              </label>
+              <input 
+                type="url" 
+                id="form-event-reg-url" 
+                class="form-control" 
+                placeholder="https://yourcollege.edu/register" 
+                required 
+              />
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="form-event-desc" class="form-label">
+                Event Description <span class="required">*</span>
+              </label>
+              <textarea 
+                id="form-event-desc" 
+                class="form-control" 
+                placeholder="Provide a detailed description of the event, eligibility, rounds, and rules..." 
+                required
+              ></textarea>
+              <div class="form-error"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary btn-modal-cancel">Cancel</button>
+          <button type="submit" class="btn-primary" id="btn-save-event">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Save &amp; Publish Event</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Authentication & 3-Role Login Modal
+       ========================================================================= -->
+  <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="modal-dialog" style="max-width: 680px;">
+      <div class="modal-header">
+        <div class="modal-title" id="auth-modal-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 0.4rem; color: #c4b5fd;">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          SPSU Single Sign-On &amp; Role Access
+        </div>
+        <button class="btn-close-modal" aria-label="Close authentication modal" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Auth Mode Tabs -->
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab-btn active" id="tab-btn-demo-roles" role="tab" type="button">
+            ⚡ 1-Click Demo Logins
+          </button>
+          <button class="auth-tab-btn" id="tab-btn-password-login" role="tab" type="button">
+            🔑 Password Sign In
+          </button>
+          <button class="auth-tab-btn" id="tab-btn-signup" role="tab" type="button">
+            📝 New Account
+          </button>
+        </div>
+
+        <!-- TAB 1: 1-Click Demo Role Cards (Ideal for Presentation / Examiner) -->
+        <div class="auth-tab-content" id="auth-tab-demo-roles">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+            Select one of the <strong>3 pre-configured roles</strong> below to instantly test role-based permissions and access rights at Sir Padampat Singhania University (SPSU):
+          </p>
+
+          <div class="auth-role-cards-grid">
+            <!-- 1. Student Card -->
+            <div class="auth-role-card" data-role="student" id="card-login-student">
+              <div>
+                <div class="auth-role-icon">🎓</div>
+                <div class="auth-role-name">University Student</div>
+                <div class="auth-role-email">student@spsu.ac.in</div>
+                <div class="auth-role-desc">
+                  <strong>Aarav Sharma</strong> (B.Tech CSE 3rd Yr). Browse events, bookmark favorites, register for campus entry tickets &amp; view digital passes.
+                </div>
+              </div>
+              <button type="button" class="btn-select-role">Login as Student &rarr;</button>
+            </div>
+
+            <!-- 2. Organizer Card -->
+            <div class="auth-role-card" data-role="organizer" id="card-login-organizer">
+              <div>
+                <div class="auth-role-icon">📋</div>
+                <div class="auth-role-name">Event Organizer</div>
+                <div class="auth-role-email">organizer@spsu.ac.in</div>
+                <div class="auth-role-desc">
+                  <strong>Priya Patel</strong> (SAC &amp; Coding Club). Post campus fests/hackathons, edit department listings, and view registered student rosters.
+                </div>
+              </div>
+              <button type="button" class="btn-select-role">Login as Organizer &rarr;</button>
+            </div>
+
+            <!-- 3. Admin Card -->
+            <div class="auth-role-card" data-role="admin" id="card-login-admin">
+              <div>
+                <div class="auth-role-icon">🛡️</div>
+                <div class="auth-role-name">University Admin</div>
+                <div class="auth-role-email">admin@spsu.ac.in</div>
+                <div class="auth-role-desc">
+                  <strong>Dr. Rajesh Verma</strong> (Dean Student Affairs). University-wide event governance, approve listings, view engagement KPI analytics.
+                </div>
+              </div>
+              <button type="button" class="btn-select-role">Login as Admin &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: Standard Password Login -->
+        <div class="auth-tab-content" id="auth-tab-password-login" style="display: none;">
+          <div class="credential-chips-row">
+            <span style="font-size: 0.75rem; color: var(--text-dim);">Quick Autofill:</span>
+            <button type="button" class="credential-chip" id="chip-fill-student">🎓 student@spsu.ac.in</button>
+            <button type="button" class="credential-chip" id="chip-fill-organizer">📋 organizer@spsu.ac.in</button>
+            <button type="button" class="credential-chip" id="chip-fill-admin">🛡️ admin@spsu.ac.in</button>
+          </div>
+
+          <form id="password-login-form" novalidate>
+            <div class="form-group" style="margin-bottom: 1.15rem;">
+              <label for="login-email" class="form-label">SPSU Email Address</label>
+              <input 
+                type="email" 
+                id="login-email" 
+                class="form-control" 
+                placeholder="e.g. student@spsu.ac.in" 
+                required 
+              />
+              <div class="form-error" id="login-email-error"></div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                <label for="login-password" class="form-label" style="margin-bottom: 0;">Password</label>
+                <span style="font-size: 0.725rem; color: #c4b5fd;">Demo: student123 / organizer123 / admin123</span>
+              </div>
+              <input 
+                type="password" 
+                id="login-password" 
+                class="form-control" 
+                placeholder="Enter password" 
+                required 
+              />
+              <div class="form-error" id="login-password-error"></div>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+              <span>Authenticate &amp; Sign In</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB 3: New Account Registration -->
+        <div class="auth-tab-content" id="auth-tab-signup" style="display: none;">
+          <form id="signup-form" novalidate>
+            <div class="form-grid two-col" style="margin-bottom: 1.25rem;">
+              <div class="form-group">
+                <label for="signup-name" class="form-label">Full Name <span class="required">*</span></label>
+                <input type="text" id="signup-name" class="form-control" placeholder="e.g. Rahul Mehta" required />
+              </div>
+              <div class="form-group">
+                <label for="signup-email" class="form-label">University Email <span class="required">*</span></label>
+                <input type="email" id="signup-email" class="form-control" placeholder="name@spsu.ac.in" required />
+              </div>
+              <div class="form-group">
+                <label for="signup-role" class="form-label">Select Role <span class="required">*</span></label>
+                <select id="signup-role" class="form-control" required>
+                  <option value="student">🎓 Student</option>
+                  <option value="organizer">📋 Event Organizer / Club Lead</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="signup-dept" class="form-label">Branch / Department <span class="required">*</span></label>
+                <input type="text" id="signup-dept" class="form-control" placeholder="e.g. B.Tech CSE 2nd Yr" required />
+              </div>
+              <div class="form-group full-width">
+                <label for="signup-password" class="form-label">Password <span class="required">*</span></label>
+                <input type="password" id="signup-password" class="form-control" placeholder="Create a password" required />
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+              <span>Create Account &amp; Log In</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Student Event Registration Pass Modal
+       ========================================================================= -->
+  <div class="modal-backdrop" id="registration-modal" role="dialog" aria-modal="true" aria-labelledby="reg-modal-title">
+    <div class="modal-dialog" style="max-width: 580px;">
+      <div class="modal-header">
+        <div class="modal-title" id="reg-modal-title">Campus Event Registration</div>
+        <button class="btn-close-modal" aria-label="Close registration modal" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="student-reg-form" novalidate>
+        <div class="modal-body">
+          <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: var(--radius-md); padding: 0.95rem; margin-bottom: 1.25rem;">
+            <div style="font-size: 0.725rem; text-transform: uppercase; letter-spacing: 0.06em; color: #c4b5fd; font-weight: 700; margin-bottom: 0.2rem;">
+              Registering for Official SPSU Event
+            </div>
+            <div style="font-size: 1.05rem; font-weight: 700; color: #ffffff;" id="reg-target-event-title">
+              Event Title
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;" id="reg-target-event-meta">
+              Nov 20, 2026 · SPSU Campus, Udaipur
+            </div>
+          </div>
+
+          <div class="form-grid two-col">
+            <div class="form-group full-width">
+              <label for="reg-student-name" class="form-label">Student Full Name <span class="required">*</span></label>
+              <input type="text" id="reg-student-name" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-student-roll" class="form-label">SPSU Enrollment ID <span class="required">*</span></label>
+              <input type="text" id="reg-student-roll" class="form-control" placeholder="e.g. SPSU/2023/CSE/042" required />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-student-email" class="form-label">University Email <span class="required">*</span></label>
+              <input type="email" id="reg-student-email" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-student-phone" class="form-label">Contact Phone No. <span class="required">*</span></label>
+              <input type="tel" id="reg-student-phone" class="form-control" placeholder="+91 98290 12345" required />
+            </div>
+
+            <div class="form-group">
+              <label for="reg-student-branch" class="form-label">Program &amp; Branch <span class="required">*</span></label>
+              <input type="text" id="reg-student-branch" class="form-control" placeholder="e.g. B.Tech CSE" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary btn-modal-cancel">Cancel</button>
+          <button type="submit" class="btn-primary" id="btn-submit-registration">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Confirm &amp; Issue Campus Pass</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Digital Event Entry Ticket Pass Modal (Printable)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="ticket-modal" role="dialog" aria-modal="true" aria-labelledby="ticket-pass-title">
+    <div class="modal-dialog" style="max-width: 600px;">
+      <div class="modal-header">
+        <div class="modal-title">Official Campus Pass</div>
+        <button class="btn-close-modal" aria-label="Close ticket pass modal" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.25rem;">
+        <div class="ticket-pass-wrap" id="printable-ticket-card">
+          <div class="ticket-notch-left"></div>
+          <div class="ticket-notch-right"></div>
+
+          <div class="ticket-header">
+            <div>
+              <div class="ticket-university">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>
+                Sir Padampat Singhania University · Udaipur
+              </div>
+              <h3 class="ticket-title" id="ticket-pass-title">HackSPSU 2026</h3>
+            </div>
+            <div class="ticket-status-stamp">Confirmed Pass</div>
+          </div>
+
+          <div class="ticket-body">
+            <div class="ticket-info-grid">
+              <div>
+                <div class="ticket-field-label">Student Name</div>
+                <div class="ticket-field-val" id="ticket-student-name">Aarav Sharma</div>
+              </div>
+              <div>
+                <div class="ticket-field-label">SPSU Enrollment ID</div>
+                <div class="ticket-field-val" id="ticket-student-id">SPSU/2023/CSE/042</div>
+              </div>
+              <div>
+                <div class="ticket-field-label">Event Date &amp; Time</div>
+                <div class="ticket-field-val" id="ticket-event-date">Nov 20, 2026 · 09:30 AM</div>
+              </div>
+              <div>
+                <div class="ticket-field-label">Venue Location</div>
+                <div class="ticket-field-val" id="ticket-event-venue">Sir Padampat Auditorium</div>
+              </div>
+              <div>
+                <div class="ticket-field-label">Department / Branch</div>
+                <div class="ticket-field-val" id="ticket-student-branch">B.Tech CSE</div>
+              </div>
+              <div>
+                <div class="ticket-field-label">Access Type</div>
+                <div class="ticket-field-val" style="color: #34d399;">All-Access Student Pass</div>
+              </div>
+            </div>
+
+            <!-- Simulated QR code -->
+            <div class="ticket-qr-zone">
+              <svg class="ticket-qr-svg" viewBox="0 0 100 100">
+                <rect width="100" height="100" fill="#ffffff" />
+                <!-- Position detection patterns -->
+                <rect x="5" y="5" width="28" height="28" fill="#000" />
+                <rect x="9" y="9" width="20" height="20" fill="#fff" />
+                <rect x="13" y="13" width="12" height="12" fill="#000" />
+                <rect x="67" y="5" width="28" height="28" fill="#000" />
+                <rect x="71" y="9" width="20" height="20" fill="#fff" />
+                <rect x="75" y="13" width="12" height="12" fill="#000" />
+                <rect x="5" y="67" width="28" height="28" fill="#000" />
+                <rect x="9" y="71" width="20" height="20" fill="#fff" />
+                <rect x="13" y="75" width="12" height="12" fill="#000" />
+                <!-- Random data cells -->
+                <rect x="38" y="8" width="6" height="6" fill="#000" />
+                <rect x="48" y="12" width="6" height="6" fill="#000" />
+                <rect x="38" y="24" width="6" height="6" fill="#000" />
+                <rect x="48" y="32" width="6" height="6" fill="#000" />
+                <rect x="8" y="38" width="6" height="6" fill="#000" />
+                <rect x="20" y="44" width="6" height="6" fill="#000" />
+                <rect x="38" y="44" width="24" height="24" fill="#000" />
+                <rect x="42" y="48" width="16" height="16" fill="#fff" />
+                <rect x="46" y="52" width="8" height="8" fill="#000" />
+                <rect x="70" y="40" width="6" height="6" fill="#000" />
+                <rect x="82" y="48" width="6" height="6" fill="#000" />
+                <rect x="38" y="76" width="6" height="6" fill="#000" />
+                <rect x="50" y="82" width="6" height="6" fill="#000" />
+                <rect x="70" y="70" width="6" height="6" fill="#000" />
+                <rect x="80" y="80" width="8" height="8" fill="#000" />
+              </svg>
+              <div class="ticket-number-tag" id="ticket-number-val">SPSU-TKT-2026-8492</div>
+            </div>
+          </div>
+
+          <div class="ticket-footer-bar">
+            <div>📌 Valid with SPSU Student Identity Card at Entry Gate</div>
+            <div>Bhatewar, Udaipur Campus</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btn-print-ticket" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          <span>Print / Save Pass (PDF)</span>
+        </button>
+        <button class="btn-primary btn-modal-cancel" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Registered Attendees Roster Modal (Organizer & Admin View)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="attendees-modal" role="dialog" aria-modal="true" aria-labelledby="attendees-modal-title">
+    <div class="modal-dialog" style="max-width: 820px;">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="attendees-modal-title">Participant Attendees Roster</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;" id="attendees-event-subtitle">
+            Registered students for HackSPSU 2026
+          </div>
+        </div>
+        <button class="btn-close-modal" aria-label="Close roster modal" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">
+            Total Confirmed Registrations: <span style="color: #34d399;" id="attendees-total-count">0</span>
+          </div>
+          <button class="btn-secondary" id="btn-print-attendees" type="button" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            <span>Print Attendee Sheet</span>
+          </button>
+        </div>
+
+        <div class="attendees-table-wrap">
+          <table class="attendees-table">
+            <thead>
+              <tr>
+                <th>Pass #</th>
+                <th>Student Name</th>
+                <th>SPSU Roll No</th>
+                <th>Branch</th>
+                <th>Phone</th>
+                <th>Registered Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="attendees-table-body">
+              <!-- Rendered dynamically by script.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-primary btn-modal-cancel" type="button">Close Roster</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Role Permission Required Prompt Modal
+       ========================================================================= -->
+  <div class="modal-backdrop" id="permission-modal" role="dialog" aria-modal="true" aria-labelledby="perm-title">
+    <div class="modal-dialog" style="max-width: 500px; text-align: center;">
+      <div class="modal-body" style="padding: 2.25rem 1.5rem 1.5rem;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(139, 92, 246, 0.15); border: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.75rem;">
+          🔒
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem;" id="perm-title">
+          Organizer Access Required
+        </h3>
+        <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1.5rem;" id="perm-desc">
+          Posting and managing university events requires <strong>Event Organizer</strong> or <strong>University Admin</strong> privileges. 
+          Switch roles with 1-click below to test this feature:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+          <button type="button" class="btn-primary" id="btn-perm-switch-organizer" style="width: 100%; justify-content: center;">
+            <span>Switch to Event Organizer (Priya Patel)</span>
+          </button>
+          <button type="button" class="btn-secondary" id="btn-perm-switch-admin" style="width: 100%; justify-content: center;">
+            <span>Switch to University Admin (Dr. Rajesh Verma)</span>
+          </button>
+          <button type="button" class="btn-secondary btn-modal-cancel" style="width: 100%; justify-content: center; margin-top: 0.25rem;">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       How to Run Locally Modal (Live Server Guide for Examiner / Users)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="help-modal" role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title" id="help-title">How to Run Locally (Live Server)</div>
+        <button class="btn-close-modal" aria-label="Close help modal" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" style="font-size: 0.925rem; line-height: 1.65; color: var(--text-muted);">
+        <p style="margin-bottom: 1rem; color: var(--text-main);">
+          <strong>EventHive</strong> is built with pure <strong>HTML5, CSS3, and Vanilla JavaScript</strong> with zero external framework dependencies. Follow these quick steps to run it locally on your computer:
+        </p>
+
+        <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          <li>
+            <strong>Open Folder in VS Code:</strong>
+            Download or extract the project folder containing <code>index.html</code>, <code>style.css</code>, and <code>script.js</code>, and open it in Visual Studio Code.
+          </li>
+          <li>
+            <strong>Install Live Server Extension:</strong>
+            In VS Code, press <kbd>Ctrl+Shift+X</kbd> (or <kbd>Cmd+Shift+X</kbd> on macOS), search for <em>"Live Server"</em> (by Ritwick Dey), and click <strong>Install</strong>.
+          </li>
+          <li>
+            <strong>Launch the Website:</strong>
+            Right-click on <code>index.html</code> in the file explorer and select <strong>"Open with Live Server"</strong> (or click <em>"Go Live"</em> in the bottom blue status bar).
+          </li>
+          <li>
+            <strong>Explore &amp; Test:</strong>
+            Your browser will automatically open <code>http://127.0.0.1:5500/index.html</code>. Bookmarking events, searching, filtering, and switching between the 3 roles (Student, Organizer, Admin) will immediately work and persist via LocalStorage.
+          </li>
+        </ol>
+
+        <div style="padding: 0.85rem; background: var(--bg-input); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <strong style="color: #c4b5fd;">Academic / Mini-Project Note:</strong>
+          This application requires no Node.js runtime, Python server, or database installation to demonstrate. It runs out of the box in any modern browser!
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-primary btn-modal-cancel" type="button">Got It</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+
+  <div class="toast-container" id="toast-container" aria-live="assertive"></div>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+</html>
