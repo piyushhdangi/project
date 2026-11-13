@@ -145,36 +145,36 @@ export function getDefaultUsers(): UserAccount[] {
   return [
     {
       id: 'usr-student-01',
-      name: 'Aarav Sharma',
+      name: 'Anirudhh',
       email: 'student@spsu.ac.in',
       password: 'student123',
       role: 'student',
       enrollmentId: 'SPSU/2023/CSE/042',
       department: 'Dept. of Computer Science & Engineering (3rd Year)',
       phone: '+91 98290 12345',
-      avatarText: 'AS'
+      avatarText: 'AN'
     },
     {
       id: 'usr-organizer-01',
-      name: 'Priya Patel',
+      name: 'Piyush',
       email: 'organizer@spsu.ac.in',
       password: 'organizer123',
       role: 'organizer',
       enrollmentId: 'SPSU/FAC/SAC/019',
       department: 'Student Activity Council (SAC) & CSE Coding Club',
       phone: '+91 94140 56789',
-      avatarText: 'PP'
+      avatarText: 'PY'
     },
     {
       id: 'usr-admin-01',
-      name: 'Dr. Rajesh Verma',
+      name: 'DS Chouhan',
       email: 'admin@spsu.ac.in',
       password: 'admin123',
       role: 'admin',
       enrollmentId: 'SPSU/ADM/DEAN/004',
       department: 'Dean of Student Affairs & Campus Administration, SPSU Udaipur',
       phone: '+91 94141 89012',
-      avatarText: 'RV'
+      avatarText: 'DC'
     }
   ];
 }
@@ -225,16 +225,17 @@ export function getUserPermissions(role?: UserRole): RolePermissions {
 }
 
 /**
- * Authenticates user by email and password
+ * Authenticates user by email or enrollment ID and password
  */
 export function authenticateUser(
   users: UserAccount[],
-  email: string,
+  identifier: string,
   password: string
 ): UserAccount | null {
-  const cleanEmail = email.trim().toLowerCase();
+  const cleanId = identifier.trim().toLowerCase();
   const found = users.find(
-    u => u.email.toLowerCase() === cleanEmail && u.password === password
+    u => (u.email.toLowerCase() === cleanId || (u.enrollmentId && u.enrollmentId.toLowerCase() === cleanId)) &&
+         u.password === password
   );
   return found || null;
 }

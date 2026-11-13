@@ -22,6 +22,34 @@
 <body>
 
   <!-- =========================================================================
+       Top Persistent Role & Instant Login Bar (3-Role SPSU Switcher)
+       ========================================================================= -->
+  <aside class="top-role-bar" id="top-role-bar" aria-label="Demo role selector">
+    <div class="container top-role-container">
+      <div class="top-role-left">
+        <span class="role-pulse-dot" aria-hidden="true"></span>
+        <span class="top-role-title">Current Role:</span>
+        <span class="role-badge role-student" id="top-role-indicator">🎓 Student (Anirudhh)</span>
+      </div>
+      <div class="top-role-switcher">
+        <span class="top-role-switch-label">Instant Login:</span>
+        <button type="button" class="top-role-btn active" data-role="student" id="top-btn-student" title="Switch to Student Account">
+          🎓 Student
+        </button>
+        <button type="button" class="top-role-btn" data-role="organizer" id="top-btn-organizer" title="Switch to Event Organizer Account">
+          🎪 Organizer
+        </button>
+        <button type="button" class="top-role-btn" data-role="admin" id="top-btn-admin" title="Switch to University Admin Account">
+          🛡️ Admin
+        </button>
+        <button type="button" class="top-login-modal-btn" id="btn-top-open-login" title="Open full 3-role login panel">
+          🔑 All Logins
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
        Site Header & Navigation
        ========================================================================= -->
   <header class="site-header">
@@ -68,8 +96,8 @@
         <div class="user-menu-container" id="user-menu-wrap">
           <!-- Populated by script.js: either Login Button or User Profile Capsule -->
           <button class="user-nav-capsule" id="btn-user-capsule" type="button" aria-expanded="false" aria-haspopup="true">
-            <div class="user-avatar-pill role-student" id="header-avatar">AS</div>
-            <span class="user-name-text" id="header-user-name">Aarav S.</span>
+            <div class="user-avatar-pill role-student" id="header-avatar">AN</div>
+            <span class="user-name-text" id="header-user-name">Anirudhh</span>
             <span class="role-badge role-student" id="header-role-badge">Student</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
@@ -79,9 +107,9 @@
           <!-- Floating User Dropdown Menu -->
           <div class="user-dropdown-menu" id="user-dropdown-menu">
             <div class="dropdown-user-header">
-              <div class="user-avatar-pill role-student" id="dropdown-avatar">AS</div>
+              <div class="user-avatar-pill role-student" id="dropdown-avatar">AN</div>
               <div class="dropdown-user-info">
-                <div class="dropdown-user-name" id="dropdown-user-name">Aarav Sharma</div>
+                <div class="dropdown-user-name" id="dropdown-user-name">Anirudhh</div>
                 <div class="dropdown-user-email" id="dropdown-user-email">student@spsu.ac.in</div>
                 <div class="dropdown-user-dept" id="dropdown-user-dept">B.Tech CSE (3rd Yr) · SPSU Udaipur</div>
               </div>
@@ -228,6 +256,59 @@
           The centralized event discovery and participation hub for Sir Padampat Singhania University (SPSU), Udaipur. 
           Discover university hackathons, Panache cultural fest, technical workshops, sports tournaments, and club activities.
         </p>
+
+        <!-- Instant 3-Role Demo Login Picker -->
+        <div class="hero-role-picker" id="hero-role-picker">
+          <div class="hero-role-picker-label">
+            <span class="hero-role-picker-title">
+              <span>⚡</span> 3 Logins Available – Switch Role with 1-Click
+            </span>
+            <span class="hero-role-picker-hint">SPSU Udaipur Mini-Project Demo</span>
+          </div>
+          <div class="hero-role-cards">
+            <!-- 1. Student -->
+            <div class="hero-role-card active" data-role="student" id="hero-card-student" role="button" tabindex="0">
+              <div class="hero-role-top">
+                <span class="hero-role-icon">🎓</span>
+                <span class="hero-role-tag">Student</span>
+              </div>
+              <div class="hero-role-name">Anirudhh</div>
+              <div class="hero-role-creds">student@spsu.ac.in · student123</div>
+              <div class="hero-role-desc">Browse campus events, get entry passes &amp; view digital QR tickets.</div>
+              <div class="hero-role-btn-wrap">
+                <span class="hero-role-action-btn">Active Role ✓</span>
+              </div>
+            </div>
+
+            <!-- 2. Organizer -->
+            <div class="hero-role-card" data-role="organizer" id="hero-card-organizer" role="button" tabindex="0">
+              <div class="hero-role-top">
+                <span class="hero-role-icon">🎪</span>
+                <span class="hero-role-tag">Event Organizer</span>
+              </div>
+              <div class="hero-role-name">Piyush</div>
+              <div class="hero-role-creds">organizer@spsu.ac.in · organizer123</div>
+              <div class="hero-role-desc">Post &amp; manage department events, inspect &amp; print attendee rosters.</div>
+              <div class="hero-role-btn-wrap">
+                <span class="hero-role-action-btn">Login as Organizer &rarr;</span>
+              </div>
+            </div>
+
+            <!-- 3. Admin -->
+            <div class="hero-role-card" data-role="admin" id="hero-card-admin" role="button" tabindex="0">
+              <div class="hero-role-top">
+                <span class="hero-role-icon">🛡️</span>
+                <span class="hero-role-tag">University Admin</span>
+              </div>
+              <div class="hero-role-name">DS Chouhan</div>
+              <div class="hero-role-creds">admin@spsu.ac.in · admin123</div>
+              <div class="hero-role-desc">Event governance, approvals, campus engagement analytics &amp; audit export.</div>
+              <div class="hero-role-btn-wrap">
+                <span class="hero-role-action-btn">Login as Admin &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Multi-Field Hero Search Bar -->
         <div class="hero-search-bar" role="search">
@@ -603,7 +684,7 @@
     <!-- =======================================================================
          Admin Control Center Section (University Governance & Analytics)
          ======================================================================= -->
-    <section class="organizer-section" id="admin-section" style="border-top: 2px solid rgba(245, 158, 11, 0.3); background: rgba(15, 22, 43, 0.85); display: none;">
+    <section class="organizer-section" id="admin-section" style="border-top: 2px solid #fde68a; background: #ffffff; display: none;">
       <div class="container">
         <div class="section-header with-actions">
           <div>
@@ -611,7 +692,7 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
-              <span>University Administrator View · Dr. Rajesh Verma (Dean SAC)</span>
+              <span>University Administrator View · DS Chouhan (Dean SAC)</span>
             </div>
             <h2 class="section-title">Campus Governance &amp; Event Analytics</h2>
             <p class="section-subtitle">
@@ -701,11 +782,11 @@
         </div>
 
         <div class="footer-col">
-          <h5>Developer &amp; Help</h5>
+          <h5>University Portal</h5>
           <ul class="footer-links">
-            <li><a href="#" id="btn-how-to-run">How to Run Locally (Live Server)</a></li>
-            <li><a href="https://spsu.ac.in" target="_blank" rel="noopener noreferrer">SPSU Official Portal</a></li>
-            <li><span class="academic-badge">B.Tech CSE Project Demo</span></li>
+            <li><a href="https://spsu.ac.in" target="_blank" rel="noopener noreferrer">SPSU Official Website</a></li>
+            <li><a href="#explore">Campus Event Directory</a></li>
+            <li><span class="academic-badge">Sir Padampat Singhania University</span></li>
           </ul>
         </div>
       </div>
@@ -1022,14 +1103,14 @@
        Authentication & 3-Role Login Modal
        ========================================================================= -->
   <div class="modal-backdrop" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
-    <div class="modal-dialog" style="max-width: 680px;">
+    <div class="modal-dialog" style="max-width: 620px;">
       <div class="modal-header">
         <div class="modal-title" id="auth-modal-title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 0.4rem; color: #c4b5fd;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 0.4rem; color: var(--primary);">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
           </svg>
-          SPSU Single Sign-On &amp; Role Access
+          SPSU University Portal · Account Sign In
         </div>
         <button class="btn-close-modal" aria-label="Close authentication modal" type="button">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1042,105 +1123,87 @@
       <div class="modal-body">
         <!-- Auth Mode Tabs -->
         <div class="auth-tabs" role="tablist">
-          <button class="auth-tab-btn active" id="tab-btn-demo-roles" role="tab" type="button">
-            ⚡ 1-Click Demo Logins
-          </button>
-          <button class="auth-tab-btn" id="tab-btn-password-login" role="tab" type="button">
-            🔑 Password Sign In
+          <button class="auth-tab-btn active" id="tab-btn-password-login" role="tab" type="button">
+            🔑 Sign In with ID &amp; Password
           </button>
           <button class="auth-tab-btn" id="tab-btn-signup" role="tab" type="button">
-            📝 New Account
+            📝 Create New Account
           </button>
         </div>
 
-        <!-- TAB 1: 1-Click Demo Role Cards (Ideal for Presentation / Examiner) -->
-        <div class="auth-tab-content" id="auth-tab-demo-roles">
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-            Select one of the <strong>3 pre-configured roles</strong> below to instantly test role-based permissions and access rights at Sir Padampat Singhania University (SPSU):
+        <!-- TAB 1: ID & Password Sign In (Primary) -->
+        <div class="auth-tab-content" id="auth-tab-password-login">
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Sign in using your <strong>SPSU University ID / Email</strong> and password to access student passes, event submissions, or administration.
           </p>
 
-          <div class="auth-role-cards-grid">
-            <!-- 1. Student Card -->
-            <div class="auth-role-card" data-role="student" id="card-login-student">
-              <div>
-                <div class="auth-role-icon">🎓</div>
-                <div class="auth-role-name">University Student</div>
-                <div class="auth-role-email">student@spsu.ac.in</div>
-                <div class="auth-role-desc">
-                  <strong>Aarav Sharma</strong> (B.Tech CSE 3rd Yr). Browse events, bookmark favorites, register for campus entry tickets &amp; view digital passes.
-                </div>
-              </div>
-              <button type="button" class="btn-select-role">Login as Student &rarr;</button>
+          <!-- 3-Role Demo Autofill Quick Selectors -->
+          <div class="demo-accounts-box">
+            <div class="demo-accounts-header">
+              <span>Quick Fill Demo Credentials:</span>
+              <span class="demo-hint-tag">Click to populate ID &amp; Pass</span>
             </div>
-
-            <!-- 2. Organizer Card -->
-            <div class="auth-role-card" data-role="organizer" id="card-login-organizer">
-              <div>
-                <div class="auth-role-icon">📋</div>
-                <div class="auth-role-name">Event Organizer</div>
-                <div class="auth-role-email">organizer@spsu.ac.in</div>
-                <div class="auth-role-desc">
-                  <strong>Priya Patel</strong> (SAC &amp; Coding Club). Post campus fests/hackathons, edit department listings, and view registered student rosters.
-                </div>
-              </div>
-              <button type="button" class="btn-select-role">Login as Organizer &rarr;</button>
-            </div>
-
-            <!-- 3. Admin Card -->
-            <div class="auth-role-card" data-role="admin" id="card-login-admin">
-              <div>
-                <div class="auth-role-icon">🛡️</div>
-                <div class="auth-role-name">University Admin</div>
-                <div class="auth-role-email">admin@spsu.ac.in</div>
-                <div class="auth-role-desc">
-                  <strong>Dr. Rajesh Verma</strong> (Dean Student Affairs). University-wide event governance, approve listings, view engagement KPI analytics.
-                </div>
-              </div>
-              <button type="button" class="btn-select-role">Login as Admin &rarr;</button>
+            <div class="demo-role-chips-grid">
+              <button type="button" class="demo-account-chip" id="chip-fill-student">
+                <span class="chip-icon">🎓</span>
+                <span class="chip-info">
+                  <strong>Student · Anirudhh</strong>
+                  <code>student@spsu.ac.in</code>
+                </span>
+                <span class="chip-pass">Pass: student123</span>
+              </button>
+              <button type="button" class="demo-account-chip" id="chip-fill-organizer">
+                <span class="chip-icon">🎪</span>
+                <span class="chip-info">
+                  <strong>Organizer · Piyush</strong>
+                  <code>organizer@spsu.ac.in</code>
+                </span>
+                <span class="chip-pass">Pass: organizer123</span>
+              </button>
+              <button type="button" class="demo-account-chip" id="chip-fill-admin">
+                <span class="chip-icon">🛡️</span>
+                <span class="chip-info">
+                  <strong>Admin · DS Chouhan</strong>
+                  <code>admin@spsu.ac.in</code>
+                </span>
+                <span class="chip-pass">Pass: admin123</span>
+              </button>
             </div>
           </div>
-        </div>
 
-        <!-- TAB 2: Standard Password Login -->
-        <div class="auth-tab-content" id="auth-tab-password-login" style="display: none;">
-          <div class="credential-chips-row">
-            <span style="font-size: 0.75rem; color: var(--text-dim);">Quick Autofill:</span>
-            <button type="button" class="credential-chip" id="chip-fill-student">🎓 student@spsu.ac.in</button>
-            <button type="button" class="credential-chip" id="chip-fill-organizer">📋 organizer@spsu.ac.in</button>
-            <button type="button" class="credential-chip" id="chip-fill-admin">🛡️ admin@spsu.ac.in</button>
-          </div>
-
-          <form id="password-login-form" novalidate>
+          <form id="password-login-form" novalidate style="margin-top: 1.25rem;">
             <div class="form-group" style="margin-bottom: 1.15rem;">
-              <label for="login-email" class="form-label">SPSU Email Address</label>
+              <label for="login-email" class="form-label">University ID or Official Email <span class="required">*</span></label>
               <input 
-                type="email" 
+                type="text" 
                 id="login-email" 
                 class="form-control" 
-                placeholder="e.g. student@spsu.ac.in" 
+                placeholder="e.g. SPSU/2023/CSE/042 or student@spsu.ac.in" 
                 required 
+                autocomplete="username"
               />
               <div class="form-error" id="login-email-error"></div>
             </div>
 
             <div class="form-group" style="margin-bottom: 1.5rem;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
-                <label for="login-password" class="form-label" style="margin-bottom: 0;">Password</label>
-                <span style="font-size: 0.725rem; color: #c4b5fd;">Demo: student123 / organizer123 / admin123</span>
+                <label for="login-password" class="form-label" style="margin-bottom: 0;">Password <span class="required">*</span></label>
+                <button type="button" id="btn-toggle-login-pass" style="background: none; border: none; font-size: 0.75rem; color: var(--primary); cursor: pointer; padding: 0;">Show Password</button>
               </div>
               <input 
                 type="password" 
                 id="login-password" 
                 class="form-control" 
-                placeholder="Enter password" 
+                placeholder="Enter password (e.g. student123)" 
                 required 
+                autocomplete="current-password"
               />
               <div class="form-error" id="login-password-error"></div>
             </div>
 
-            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-              <span>Authenticate &amp; Sign In</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.95rem;">
+              <span>Sign In with ID &amp; Password</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -1148,7 +1211,7 @@
           </form>
         </div>
 
-        <!-- TAB 3: New Account Registration -->
+        <!-- TAB 2: New Account Registration -->
         <div class="auth-tab-content" id="auth-tab-signup" style="display: none;">
           <form id="signup-form" novalidate>
             <div class="form-grid two-col" style="margin-bottom: 1.25rem;">
@@ -1172,13 +1235,13 @@
                 <input type="text" id="signup-dept" class="form-control" placeholder="e.g. B.Tech CSE 2nd Yr" required />
               </div>
               <div class="form-group full-width">
-                <label for="signup-password" class="form-label">Password <span class="required">*</span></label>
-                <input type="password" id="signup-password" class="form-control" placeholder="Create a password" required />
+                <label for="signup-password" class="form-label">Create Password <span class="required">*</span></label>
+                <input type="password" id="signup-password" class="form-control" placeholder="Create a password (min 6 chars)" required />
               </div>
             </div>
 
-            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-              <span>Create Account &amp; Log In</span>
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.75rem 1rem;">
+              <span>Create Account &amp; Sign In</span>
             </button>
           </form>
         </div>
@@ -1203,11 +1266,11 @@
 
       <form id="student-reg-form" novalidate>
         <div class="modal-body">
-          <div style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: var(--radius-md); padding: 0.95rem; margin-bottom: 1.25rem;">
-            <div style="font-size: 0.725rem; text-transform: uppercase; letter-spacing: 0.06em; color: #c4b5fd; font-weight: 700; margin-bottom: 0.2rem;">
+          <div style="background: #eef2ff; border: 1px solid #c7d2fe; border-radius: var(--radius-md); padding: 0.95rem; margin-bottom: 1.25rem;">
+            <div style="font-size: 0.725rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--primary); font-weight: 700; margin-bottom: 0.2rem;">
               Registering for Official SPSU Event
             </div>
-            <div style="font-size: 1.05rem; font-weight: 700; color: #ffffff;" id="reg-target-event-title">
+            <div style="font-size: 1.05rem; font-weight: 700; color: var(--text-main);" id="reg-target-event-title">
               Event Title
             </div>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;" id="reg-target-event-meta">
@@ -1293,7 +1356,7 @@
             <div class="ticket-info-grid">
               <div>
                 <div class="ticket-field-label">Student Name</div>
-                <div class="ticket-field-val" id="ticket-student-name">Aarav Sharma</div>
+                <div class="ticket-field-val" id="ticket-student-name">Anirudhh</div>
               </div>
               <div>
                 <div class="ticket-field-label">SPSU Enrollment ID</div>
@@ -1440,10 +1503,10 @@
   <div class="modal-backdrop" id="permission-modal" role="dialog" aria-modal="true" aria-labelledby="perm-title">
     <div class="modal-dialog" style="max-width: 500px; text-align: center;">
       <div class="modal-body" style="padding: 2.25rem 1.5rem 1.5rem;">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(139, 92, 246, 0.15); border: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.75rem;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #eef2ff; border: 1px solid #c7d2fe; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.75rem;">
           🔒
         </div>
-        <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem;" id="perm-title">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;" id="perm-title">
           Organizer Access Required
         </h3>
         <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1.5rem;" id="perm-desc">
@@ -1453,10 +1516,10 @@
 
         <div style="display: flex; flex-direction: column; gap: 0.65rem;">
           <button type="button" class="btn-primary" id="btn-perm-switch-organizer" style="width: 100%; justify-content: center;">
-            <span>Switch to Event Organizer (Priya Patel)</span>
+            <span>Switch to Event Organizer (Piyush)</span>
           </button>
           <button type="button" class="btn-secondary" id="btn-perm-switch-admin" style="width: 100%; justify-content: center;">
-            <span>Switch to University Admin (Dr. Rajesh Verma)</span>
+            <span>Switch to University Admin (DS Chouhan)</span>
           </button>
           <button type="button" class="btn-secondary btn-modal-cancel" style="width: 100%; justify-content: center; margin-top: 0.25rem;">
             Cancel
@@ -1466,56 +1529,7 @@
     </div>
   </div>
 
-  <!-- =========================================================================
-       How to Run Locally Modal (Live Server Guide for Examiner / Users)
-       ========================================================================= -->
-  <div class="modal-backdrop" id="help-modal" role="dialog" aria-modal="true" aria-labelledby="help-title">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <div class="modal-title" id="help-title">How to Run Locally (Live Server)</div>
-        <button class="btn-close-modal" aria-label="Close help modal" type="button">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
 
-      <div class="modal-body" style="font-size: 0.925rem; line-height: 1.65; color: var(--text-muted);">
-        <p style="margin-bottom: 1rem; color: var(--text-main);">
-          <strong>EventHive</strong> is built with pure <strong>HTML5, CSS3, and Vanilla JavaScript</strong> with zero external framework dependencies. Follow these quick steps to run it locally on your computer:
-        </p>
-
-        <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-          <li>
-            <strong>Open Folder in VS Code:</strong>
-            Download or extract the project folder containing <code>index.html</code>, <code>style.css</code>, and <code>script.js</code>, and open it in Visual Studio Code.
-          </li>
-          <li>
-            <strong>Install Live Server Extension:</strong>
-            In VS Code, press <kbd>Ctrl+Shift+X</kbd> (or <kbd>Cmd+Shift+X</kbd> on macOS), search for <em>"Live Server"</em> (by Ritwick Dey), and click <strong>Install</strong>.
-          </li>
-          <li>
-            <strong>Launch the Website:</strong>
-            Right-click on <code>index.html</code> in the file explorer and select <strong>"Open with Live Server"</strong> (or click <em>"Go Live"</em> in the bottom blue status bar).
-          </li>
-          <li>
-            <strong>Explore &amp; Test:</strong>
-            Your browser will automatically open <code>http://127.0.0.1:5500/index.html</code>. Bookmarking events, searching, filtering, and switching between the 3 roles (Student, Organizer, Admin) will immediately work and persist via LocalStorage.
-          </li>
-        </ol>
-
-        <div style="padding: 0.85rem; background: var(--bg-input); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-          <strong style="color: #c4b5fd;">Academic / Mini-Project Note:</strong>
-          This application requires no Node.js runtime, Python server, or database installation to demonstrate. It runs out of the box in any modern browser!
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn-primary btn-modal-cancel" type="button">Got It</button>
-      </div>
-    </div>
-  </div>
 
   <!-- Toast Container -->
 

@@ -270,36 +270,36 @@ const DEFAULT_EVENTS = [
 const DEFAULT_USERS = [
   {
     id: 'usr-student-01',
-    name: 'Aarav Sharma',
+    name: 'Anirudhh',
     email: 'student@spsu.ac.in',
     password: 'student123',
     role: 'student',
     enrollmentId: 'SPSU/2023/CSE/042',
     department: 'B.Tech CSE (3rd Yr) · Advanced Computing Lab',
     phone: '+91 98290 12345',
-    avatarText: 'AS'
+    avatarText: 'AN'
   },
   {
     id: 'usr-organizer-01',
-    name: 'Priya Patel',
+    name: 'Piyush',
     email: 'organizer@spsu.ac.in',
     password: 'organizer123',
     role: 'organizer',
     enrollmentId: 'SPSU/FAC/SAC/019',
     department: 'SAC Coordinator & SPSU Coding Club Lead',
     phone: '+91 94140 56789',
-    avatarText: 'PP'
+    avatarText: 'PY'
   },
   {
     id: 'usr-admin-01',
-    name: 'Dr. Rajesh Verma',
+    name: 'DS Chouhan',
     email: 'admin@spsu.ac.in',
     password: 'admin123',
     role: 'admin',
     enrollmentId: 'SPSU/ADM/DEAN/004',
     department: 'Dean of Student Affairs & Campus Administration, SPSU Udaipur',
     phone: '+91 94141 89012',
-    avatarText: 'RV'
+    avatarText: 'DC'
   }
 ];
 
@@ -310,7 +310,7 @@ const DEFAULT_REGISTRATIONS = [
     eventId: 'evt-hackspsu-2026',
     eventTitle: 'HackSPSU 2026: 24-Hour National Collegiate Hackathon',
     studentEmail: 'student@spsu.ac.in',
-    studentName: 'Aarav Sharma',
+    studentName: 'Anirudhh',
     enrollmentId: 'SPSU/2023/CSE/042',
     phone: '+91 98290 12345',
     branch: 'B.Tech CSE',
@@ -324,7 +324,7 @@ const DEFAULT_REGISTRATIONS = [
     eventId: 'evt-panache-fest',
     eventTitle: 'Panache 2026 – Annual National Cultural & Arts Festival',
     studentEmail: 'student@spsu.ac.in',
-    studentName: 'Aarav Sharma',
+    studentName: 'Anirudhh',
     enrollmentId: 'SPSU/2023/CSE/042',
     phone: '+91 98290 12345',
     branch: 'B.Tech CSE',
@@ -458,9 +458,9 @@ function generateEventVectorBanner(theme, title, category) {
 const STORAGE_KEYS = {
   EVENTS: 'spsu_eventhive_events_v3',
   BOOKMARKS: 'spsu_eventhive_bookmarks_v3',
-  USERS: 'spsu_eventhive_users_v3',
-  CURRENT_USER: 'spsu_eventhive_current_user_v3',
-  REGISTRATIONS: 'spsu_eventhive_registrations_v3'
+  USERS: 'spsu_eventhive_users_v4',
+  CURRENT_USER: 'spsu_eventhive_current_user_v4',
+  REGISTRATIONS: 'spsu_eventhive_registrations_v4'
 };
 
 const State = {
@@ -523,7 +523,7 @@ function initState() {
     if (savedCurrentUser) {
       State.currentUser = JSON.parse(savedCurrentUser);
     } else {
-      // Default to Student Aarav Sharma
+      // Default to Student Anirudhh
       State.currentUser = DEFAULT_USERS[0];
       localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(State.currentUser));
     }
@@ -592,9 +592,9 @@ function switchUserRole(targetRole) {
     updateBadgeCounts();
 
     const roleTitles = {
-      student: 'Student (Aarav Sharma)',
-      organizer: 'Event Organizer (Priya Patel)',
-      admin: 'University Admin (Dr. Rajesh Verma)'
+      student: 'Student (Anirudhh)',
+      organizer: 'Event Organizer (Piyush)',
+      admin: 'University Admin (DS Chouhan)'
     };
     showToast(`Switched account to ${roleTitles[targetRole]}`, 'success');
   }
@@ -653,6 +653,46 @@ function applyRolePermissions() {
       btn.classList.add('active');
     } else {
       btn.classList.remove('active');
+    }
+  });
+
+  // Top Persistent Role Bar Indicator & Buttons
+  const topRoleIndicator = document.getElementById('top-role-indicator');
+  if (topRoleIndicator) {
+    const displayName = user.name || (role === 'student' ? 'Anirudhh' : role === 'organizer' ? 'Piyush' : 'DS Chouhan');
+    const formatted = role === 'student' ? `🎓 Student (${displayName})` : role === 'organizer' ? `🎪 Organizer (${displayName})` : `🛡️ Admin (${displayName})`;
+    topRoleIndicator.textContent = formatted;
+    topRoleIndicator.className = `role-badge role-${role}`;
+  }
+
+  document.querySelectorAll('.top-role-btn').forEach(btn => {
+    if (btn.dataset.role === role) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  // Hero Section 3-Role Demo Cards
+  document.querySelectorAll('.hero-role-card').forEach(card => {
+    const isCurrent = card.dataset.role === role;
+    const actionBtn = card.querySelector('.hero-role-action-btn');
+    if (isCurrent) {
+      card.classList.add('active');
+      if (actionBtn) actionBtn.textContent = 'Active Role ✓';
+    } else {
+      card.classList.remove('active');
+      const roleName = card.dataset.role === 'student' ? 'Student' : card.dataset.role === 'organizer' ? 'Organizer' : 'Admin';
+      if (actionBtn) actionBtn.textContent = `Login as ${roleName} →`;
+    }
+  });
+
+  // Auth Modal Cards
+  document.querySelectorAll('.auth-role-card').forEach(card => {
+    if (card.dataset.role === role) {
+      card.classList.add('selected');
+    } else {
+      card.classList.remove('selected');
     }
   });
 
@@ -974,7 +1014,7 @@ function renderRegistrations() {
         <div class="empty-icon">🎟️</div>
         <h3 class="empty-title">No Campus Passes Registered Yet</h3>
         <p class="empty-desc">
-          As an SPSU student (${escapeHTML(State.currentUser?.name || 'Aarav')}), you can register for hackathons, workshops, and Panache fest to receive digital entry passes.
+          As an SPSU student (${escapeHTML(State.currentUser?.name || 'Anirudhh')}), you can register for hackathons, workshops, and Panache fest to receive digital entry passes.
         </p>
         <a href="#explore" class="btn-primary">Browse &amp; Register for Events</a>
       </div>
@@ -1544,7 +1584,7 @@ function openAddEventModal() {
   if (role !== 'organizer' && role !== 'admin') {
     openPermissionPrompt(
       'Organizer Access Required to Post Events',
-      'Event creation is restricted to registered SPSU clubs, department societies, and faculty organizers. Click below to switch to the Organizer demo account (Priya Patel):'
+      'Event creation is restricted to registered SPSU clubs, department societies, and faculty organizers. Click below to switch to the Organizer demo account (Piyush):'
     );
     return;
   }
@@ -2011,10 +2051,11 @@ function setupNavigation() {
     });
   }
 
-  // Open Full Auth Modal from dropdown or mobile
+  // Open Full Auth Modal from dropdown, top bar, or mobile
   const openLoginBtn = document.getElementById('dropdown-link-login-modal');
   const logoutBtn = document.getElementById('btn-dropdown-logout');
   const mobileLoginBtn = document.getElementById('mobile-btn-switch-account');
+  const topOpenLoginBtn = document.getElementById('btn-top-open-login');
 
   const openAuth = () => {
     if (userDropdown) userDropdown.classList.remove('active');
@@ -2029,6 +2070,30 @@ function setupNavigation() {
   if (openLoginBtn) openLoginBtn.addEventListener('click', (e) => { e.preventDefault(); openAuth(); });
   if (logoutBtn) logoutBtn.addEventListener('click', openAuth);
   if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', openAuth);
+  if (topOpenLoginBtn) topOpenLoginBtn.addEventListener('click', openAuth);
+
+  // Top Persistent Bar Role Switchers
+  document.querySelectorAll('.top-role-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetRole = btn.dataset.role;
+      if (targetRole) switchUserRole(targetRole);
+    });
+  });
+
+  // Hero Section 3-Role Demo Cards
+  document.querySelectorAll('.hero-role-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const targetRole = card.dataset.role;
+      if (targetRole) switchUserRole(targetRole);
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const targetRole = card.dataset.role;
+        if (targetRole) switchUserRole(targetRole);
+      }
+    });
+  });
 
   // Setup Auth Modal Tabs & Actions
   setupAuthModal();
@@ -2187,42 +2252,28 @@ function setupNavigation() {
     });
   }
 
-  // Live Server Help Modal Trigger
-  const helpBtn = document.getElementById('btn-how-to-run');
-  const helpModal = document.getElementById('help-modal');
-  if (helpBtn && helpModal) {
-    helpBtn.addEventListener('click', () => {
-      helpModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  }
 }
 
 // =============================================================================
-// 13. Authentication Modal Tabs & Handlers (Student, Organizer, Admin)
+// 13. Authentication Modal (ID & Password Sign In for Student, Organizer, Admin)
 // =============================================================================
 
 function setupAuthModal() {
-  const tabDemo = document.getElementById('tab-btn-demo-roles');
   const tabPassword = document.getElementById('tab-btn-password-login');
   const tabSignup = document.getElementById('tab-btn-signup');
 
-  const contentDemo = document.getElementById('auth-tab-demo-roles');
   const contentPassword = document.getElementById('auth-tab-password-login');
   const contentSignup = document.getElementById('auth-tab-signup');
 
   function switchAuthTab(activeBtn, activeContent) {
-    [tabDemo, tabPassword, tabSignup].forEach(btn => btn?.classList.remove('active'));
-    [contentDemo, contentPassword, contentSignup].forEach(cnt => {
+    [tabPassword, tabSignup].forEach(btn => btn?.classList.remove('active'));
+    [contentPassword, contentSignup].forEach(cnt => {
       if (cnt) cnt.style.display = 'none';
     });
-    activeBtn.classList.add('active');
-    activeContent.style.display = 'block';
+    activeBtn?.classList.add('active');
+    if (activeContent) activeContent.style.display = 'block';
   }
 
-  if (tabDemo && contentDemo) {
-    tabDemo.addEventListener('click', () => switchAuthTab(tabDemo, contentDemo));
-  }
   if (tabPassword && contentPassword) {
     tabPassword.addEventListener('click', () => switchAuthTab(tabPassword, contentPassword));
   }
@@ -2230,46 +2281,76 @@ function setupAuthModal() {
     tabSignup.addEventListener('click', () => switchAuthTab(tabSignup, contentSignup));
   }
 
-  // 1-Click Role Cards inside Auth Modal
-  document.getElementById('card-login-student')?.addEventListener('click', () => {
-    switchUserRole('student');
-    closeModals();
-  });
-  document.getElementById('card-login-organizer')?.addEventListener('click', () => {
-    switchUserRole('organizer');
-    closeModals();
-  });
-  document.getElementById('card-login-admin')?.addEventListener('click', () => {
-    switchUserRole('admin');
-    closeModals();
-  });
-
-  // Autofill chips for password tab
-  const emailInput = document.getElementById('login-email');
+  // Password reveal toggle
+  const togglePassBtn = document.getElementById('btn-toggle-login-pass');
   const passInput = document.getElementById('login-password');
+  const emailInput = document.getElementById('login-email');
 
+  if (togglePassBtn && passInput) {
+    togglePassBtn.addEventListener('click', () => {
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
+        togglePassBtn.textContent = 'Hide Password';
+      } else {
+        passInput.type = 'password';
+        togglePassBtn.textContent = 'Show Password';
+      }
+    });
+  }
+
+  // Helper to populate credentials into the ID & password fields
+  function autofillCredentials(idOrEmail, pass, roleLabel) {
+    if (emailInput) {
+      emailInput.value = idOrEmail;
+      emailInput.focus();
+    }
+    if (passInput) {
+      passInput.value = pass;
+    }
+    showToast(`Loaded ${roleLabel} credentials (ID: ${idOrEmail}). Click Sign In to proceed.`, 'info');
+  }
+
+  // Autofill chips for 3 roles
   document.getElementById('chip-fill-student')?.addEventListener('click', () => {
-    if (emailInput) emailInput.value = 'student@spsu.ac.in';
-    if (passInput) passInput.value = 'student123';
+    autofillCredentials('student@spsu.ac.in', 'student123', 'Student');
   });
   document.getElementById('chip-fill-organizer')?.addEventListener('click', () => {
-    if (emailInput) emailInput.value = 'organizer@spsu.ac.in';
-    if (passInput) passInput.value = 'organizer123';
+    autofillCredentials('organizer@spsu.ac.in', 'organizer123', 'Event Organizer');
   });
   document.getElementById('chip-fill-admin')?.addEventListener('click', () => {
-    if (emailInput) emailInput.value = 'admin@spsu.ac.in';
-    if (passInput) passInput.value = 'admin123';
+    autofillCredentials('admin@spsu.ac.in', 'admin123', 'University Admin');
   });
 
-  // Password Login Form
+  // ID & Password Login Form Submission
   const loginForm = document.getElementById('password-login-form');
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = (emailInput?.value || '').trim().toLowerCase();
+      const input = (emailInput?.value || '').trim().toLowerCase();
       const password = (passInput?.value || '').trim();
 
-      const user = State.users.find(u => u.email.toLowerCase() === email && u.password === password);
+      const emailErr = document.getElementById('login-email-error');
+      const passErr = document.getElementById('login-password-error');
+      if (emailErr) emailErr.textContent = '';
+      if (passErr) passErr.textContent = '';
+
+      if (!input) {
+        if (emailErr) emailErr.textContent = 'Please enter your University ID or Email.';
+        emailInput?.focus();
+        return;
+      }
+      if (!password) {
+        if (passErr) passErr.textContent = 'Please enter your account password.';
+        passInput?.focus();
+        return;
+      }
+
+      // Check matching user by email OR enrollment ID and password
+      const user = State.users.find(u => 
+        (u.email.toLowerCase() === input || (u.enrollmentId && u.enrollmentId.toLowerCase() === input)) &&
+        u.password === password
+      );
+
       if (user) {
         State.currentUser = user;
         saveCurrentUserToStorage();
@@ -2279,9 +2360,10 @@ function setupAuthModal() {
         renderRegistrations();
         renderDashboard();
         closeModals();
-        showToast(`Welcome back, ${user.name}! Logged in as ${user.role.toUpperCase()}.`, 'success');
+        showToast(`Signed in successfully! Welcome, ${user.name} (${user.role.toUpperCase()}).`, 'success');
       } else {
-        showToast('Invalid SPSU email or password. Use demo credentials or 1-Click login.', 'danger');
+        if (passErr) passErr.textContent = 'Invalid ID/Email or password. Click a demo chip above to auto-fill.';
+        showToast('Invalid credentials. Use student123, organizer123, or admin123.', 'danger');
       }
     });
   }

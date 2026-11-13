@@ -133,18 +133,28 @@ test('authenticateUser verifies credentials for student, organizer, and admin', 
   const student = authenticateUser(users, 'student@spsu.ac.in', 'student123');
   assert.ok(student);
   assert.equal(student.role, 'student');
-  assert.equal(student.name, 'Aarav Sharma');
+  assert.equal(student.name, 'Anirudhh');
 
   // Organizer
   const organizer = authenticateUser(users, 'organizer@spsu.ac.in', 'organizer123');
   assert.ok(organizer);
   assert.equal(organizer.role, 'organizer');
-  assert.equal(organizer.name, 'Priya Patel');
+  assert.equal(organizer.name, 'Piyush');
 
   // Admin
   const admin = authenticateUser(users, 'ADMIN@SPSU.AC.IN', 'admin123'); // case-insensitive email
   assert.ok(admin);
   assert.equal(admin.role, 'admin');
+  assert.equal(admin.name, 'DS Chouhan');
+
+  // Login by University Enrollment ID
+  const studentById = authenticateUser(users, 'SPSU/2023/CSE/042', 'student123');
+  assert.ok(studentById);
+  assert.equal(studentById?.id, 'usr-student-01');
+
+  const orgById = authenticateUser(users, 'spsu/fac/sac/019', 'organizer123');
+  assert.ok(orgById);
+  assert.equal(orgById?.id, 'usr-organizer-01');
 
   // Invalid password
   const failed = authenticateUser(users, 'admin@spsu.ac.in', 'wrongpassword');
@@ -179,7 +189,7 @@ test('registerStudentForEvent creates passes and prevents duplicate registration
     eventId: 'evt-hackspsu-2026',
     eventTitle: 'HackSPSU 2026',
     studentEmail: 'student@spsu.ac.in',
-    studentName: 'Aarav Sharma',
+    studentName: 'Anirudhh',
     enrollmentId: 'SPSU/2023/CSE/042',
     phone: '+91 98290 12345',
     branch: 'B.Tech CSE'
@@ -195,7 +205,7 @@ test('registerStudentForEvent creates passes and prevents duplicate registration
     eventId: 'evt-hackspsu-2026',
     eventTitle: 'HackSPSU 2026',
     studentEmail: 'student@spsu.ac.in',
-    studentName: 'Aarav Sharma',
+    studentName: 'Anirudhh',
     enrollmentId: 'SPSU/2023/CSE/042',
     phone: '+91 98290 12345',
     branch: 'B.Tech CSE'
